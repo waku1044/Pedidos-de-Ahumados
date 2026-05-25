@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smoke House | Pedidos</title>
+    <!-- Google Fonts -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <!-- Enlace al CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Smoke House</h1>
+        <p>Sanguches Ahumados Artesanales</p>
+        <h2>El auténtico sabor de la leña entre dos panes.</h2>
+    </header>
+
+    <main class="container" id="menu-grid">
+        <!-- Los productos se cargarán aquí con JS -->
+    </main>
+
+    <div id="cart-bar" class="cart-hidden">
+        <div class="cart-info">
+            <span id="cart-count">0</span> productos seleccionados
+        </div>
+        <button onclick="toggleModal()" class="btn-whatsapp">
+            Pedir por WhatsApp
+        </button>
+    </div>
+<!-- ... dentro del body, antes del script ... -->
+
+<div id="cart-modal" class="modal-hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Tu Pedido</h2>
+            <button onclick="toggleModal()" class="btn-close">&times;</button>
+        </div>
+        <div id="cart-items-list">
+            <!-- Los items del resumen se cargan aquí -->
+        </div>
+        <div class="modal-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="modal-total">$0</span>
+            </div>
+            <button onclick="sendOrder()" class="btn-confirm">
+                Confirmar y enviar a WhatsApp
+            </button>
+            <button onclick="toggleModal()" class="btn-back">
+                + Agregar algo más
+            </button>
+        </div>
+    </div>
+</div>
+
+    <!-- Enlace al JS -->
+    <script src="index.js"></script>
+</body>
+</html>
