@@ -353,7 +353,7 @@ h2 {
     border-radius: 8px;
     font-size: 16px;
 }
-@media (max-width: 600px) {
+@media (max-width: 805px) {
   .titulo {
     visibility: hidden;
     font-size: 1rem;
