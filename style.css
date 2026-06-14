@@ -5,6 +5,8 @@
     --texto: #f5f5f5;
     --gris: #a0a0a0;
     --card-bg: rgba(22, 22, 22, 0.9);
+    --amarillo:#FF0099
+
 }
 
 body {
@@ -166,6 +168,21 @@ header h1 {
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
+.btn-correguir {
+  background-color: var(--amarillo); /* Azul vibrante */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px; /* Bordes redondeados suaves */
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espacio entre el '+' y el texto */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
 
 .btn-back:hover {
   background-color:var(--naranja); /* Un azul un poco más oscuro */
@@ -267,8 +284,73 @@ header h1 {
     background: var(--naranja);
     border-radius: 10px;
 }
+.agregado{
+    display: flex;
+    justify-content: space-around;
+    width: 10rem;
+}
+.botones{
+    display: flex;
+    justify-content: space-around;
+}
+.margen-bottom{
+    margin-bottom: 1rem;
+}
+.logo {
+  height: 150px;            /* Ajustá el tamaño de tu logo */
+  width: auto;
+}
+.header{
+    display: flex;
+  align-items: center;      /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  gap: 20px;               /* Espacio entre texto y logo */
+  padding: 20px;
+  background-color: #1a1a1a; /* Un fondo oscuro hace resaltar el "ahumado" */
+}
+.titulo{
+     font-family: 'Georgia', serif;
+  font-size: 3.5rem;
+  color: #b22222;            /* Rojo fuego / Ladrillo */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra para dar profundidad */
+  font-style: italic;
+}
+.resaltar {
+    color: #ee9416;
+}
+/* El "Sello" de calidad */
+p {
+  font-size: 1.1rem;
+  color: #e67e22;          /* Color naranja brasa/madera */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 4px;     /* Espaciado para que se vea premium */
+  margin-bottom: 5px;      /* Pegadito al título de abajo */
+  text-align: center;
+}
 
+/* El "Slogan" principal */
+h2 {
+  font-size: 2.2rem;
+  color: #dcdbdb;             /* Gris muy oscuro */
+  font-family: 'Georgia', serif; /* Una fuente con "serifa" lo hace ver artesanal */
+  font-style: italic;      /* La cursiva le da un toque elegante y de sabor */
+  line-height: 1.2;
+  margin-top: 0;
+  text-align: center;
+}
+.datos-cliente {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+}
 
-
-
+.datos-cliente input,
+.datos-cliente select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
 

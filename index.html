@@ -12,16 +12,22 @@
 <body>
 
     <header>
-        <h1>Smoke House</h1>
+        <div class="header">
+            <h2 class="titulo">Ahumados</h2>
+            <img src="./img/ahumadosCamapana.png" alt="logo" class="logo">
+            <h2 class="titulo">Campana</h2>
+
+        </div>
         <p>Sanguches Ahumados Artesanales</p>
-        <h2>El auténtico sabor de la leña entre dos panes.</h2>
+        <h2>El auténtico sabor de la <span class="resaltar">leña</span> entre dos panes</h2>
+
     </header>
 
     <main class="container" id="menu-grid">
         <!-- Los productos se cargarán aquí con JS -->
     </main>
 
-    <div id="cart-bar" class="cart-hidden">
+    <div id="cart-bar" class="cart-hidde">
         <div class="cart-info">
             <span id="cart-count">0</span> productos seleccionados
         </div>
@@ -45,12 +51,44 @@
                 <span>Total:</span>
                 <span id="modal-total">$0</span>
             </div>
+            <div class="datos-cliente margen-bottom">
+    <input
+        type="text"
+        id="cliente-nombre"
+        placeholder="Nombre"
+        required
+    >
+
+    <input
+        type="text"
+        id="cliente-direccion"
+        placeholder="Dirección de entrega"
+        required
+    >
+
+    <select id="cliente-pago">
+        <option value="">Método de pago</option>
+        <option>Efectivo</option>
+        <option>Transferencia</option>
+        
+    </select>
+    <textarea
+    id="cliente-observaciones"
+    placeholder="Observaciones (sin cebolla, retirar en local, etc.)">
+</textarea>
+</div>
             <button onclick="sendOrder()" class="btn-confirm">
                 Confirmar y enviar a WhatsApp
             </button>
-            <button onclick="toggleModal()" class="btn-back">
-                + Agregar algo más
-            </button>
+            <div class="botones">
+
+                <button onclick="toggleModal()" class="btn-back">
+                    + Agregar algo más
+                </button>
+                <button onclick="toggleModal()" class="btn-correguir">
+                    - Eliminar Producto
+                </button>
+            </div>
         </div>
     </div>
 </div>
