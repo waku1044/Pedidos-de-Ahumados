@@ -355,11 +355,12 @@ h2 {
 }
 @media (max-width: 600px) {
   .titulo {
-    font-size: 18px;
+    visibility: hidden;
+    font-size: 1rem;
   }
 
   .logo {
-    width: 60px;
+    width: 10rem;
     height: auto;
   }
 
@@ -367,6 +368,6 @@ h2 {
   header h2 {
     text-align: center;
     font-size: 14px;
-    padding: 0 10px;
+    padding: 0 0px;
   }
 }
