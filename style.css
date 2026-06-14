@@ -300,13 +300,13 @@ header h1 {
   height: 150px;            /* Ajustá el tamaño de tu logo */
   width: auto;
 }
-.header{
-    display: flex;
-  align-items: center;      /* Centra verticalmente */
-  justify-content: center; /* Centra horizontalmente */
-  gap: 20px;               /* Espacio entre texto y logo */
-  padding: 20px;
-  background-color: #1a1a1a; /* Un fondo oscuro hace resaltar el "ahumado" */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap; /* clave para mobile */
+  text-align: center;
 }
 .titulo{
      font-family: 'Georgia', serif;
@@ -353,4 +353,20 @@ h2 {
     border-radius: 8px;
     font-size: 16px;
 }
+@media (max-width: 600px) {
+  .titulo {
+    font-size: 18px;
+  }
 
+  .logo {
+    width: 60px;
+    height: auto;
+  }
+
+  header p,
+  header h2 {
+    text-align: center;
+    font-size: 14px;
+    padding: 0 10px;
+  }
+}
