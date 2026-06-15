@@ -91,10 +91,15 @@
   function loadMenu() {
     menuGrid.innerHTML = MENU.map(item => `
         <div class="menu-item">
-            <img src="${item.foto}" alt="${item.nombre}">
+            <!-- Agregamos el onclick y un cursor de puntero -->
+            <img src="${item.foto}" alt="${item.nombre}" 
+                 onclick='abrirModal(${JSON.stringify(item)})' 
+                 style="cursor:pointer;">
             <div class="info">
                 <h2>${item.nombre}</h2>
-                <p>${item.descripcion}</p>
+                <div class="descripcion-container">
+                    <p class="descripcion-texto">${item.descripcion}</p>
+                </div>
                 <div class="price-row">
                     <span class="price">$${item.precio}</span>
                     <div class='agregado'>
@@ -102,12 +107,12 @@
                         <span id='contador-${item.id}'>${item.cantidad || 0}</span>
                         <button class="btn-add" onclick="sumar(${item.id})">+</button>
                     </div>
-                    
                 </div>
             </div>
         </div>
     `).join('');
 }
+
 
 function sumar(id) {
     const producto = MENU.find(p => p.id === id);
@@ -283,6 +288,23 @@ function removeFromCart(id) {
 
     window.open(url, "_blank");
 }
+function abrirModal(item) {
+    const modal = document.getElementById('modal-detalle');
+    document.getElementById('modal-img').src = item.foto;
+    document.getElementById('modal-nombre').innerText = item.nombre;
+    document.getElementById('modal-descripcion').innerText = item.descripcion;
+    
+    modal.style.display = "flex"; // Muestra el modal
+}
+
+function cerrarModal(event) {
+    const modal = document.getElementById('modal-detalle');
+    // Cierra si hace clic en la X o fuera del contenido blanco
+    if (event.target === modal || event.target.className === 'close-btn') {
+        modal.style.display = "none";
+    }
+}
+document.getElementById('year').textContent = new Date().getFullYear();
 
     // Cambiar la función del botón del carrito en el HTML para que abra el modal
     // Asegurate que en tu index.html el cart-bar diga: onclick="toggleModal()"
