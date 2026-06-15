@@ -196,7 +196,7 @@ header h1 {
 .btn-close {
   background: none;
   border: none;
-  color: #64748b; /* Gris suave */
+  color: #f5f5f5; /* Gris suave */
   font-size: 28px;
   line-height: 1;
   cursor: pointer;
@@ -382,7 +382,7 @@ h2 {
 
 /* El contenedor blanco del modal */
 .modal-content {
-    background-color: white;
+    background-color: rgb(96, 95, 95);
     padding: 20px;
     border-radius: 15px;
     max-width: 90%;

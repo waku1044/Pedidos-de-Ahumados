@@ -209,10 +209,7 @@ function renderSummary() {
           <span>${item.nombre} <strong>( x${item.cantidad} )</strong></span><br>
           <small style="color: var(--naranja);">$${precio}</small>
         </div>
-        <!-- Usamos item.id en lugar de cartId 
-         <button class="btn-remove" onclick="removeFromCart(${item.id})">
-           <svg ...> (icono basura) </svg>
-         </button>-->
+        
       </div>
     `;
   }).join('');
