@@ -246,7 +246,12 @@ function toggleModal(forceClose = false) {
 
 function sendOrder() {
     if (cart.length === 0) {
-        alert("No hay productos en el carrito");
+        Swal.fire({
+            title: 'Faltan datos',
+            text: 'No hay productos en el carrito.',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+        });
         return;
     }
 
@@ -261,9 +266,6 @@ function sendOrder() {
             text: 'Por favor, ingresá tu nombre.',
             icon: 'warning',
             confirmButtonText: 'Ok',
-            customClass: {
-        popup: 'emergencia' // Esto aplica la clase .emergencia al contenedor del popup
-    }
         });
         return;
     }
