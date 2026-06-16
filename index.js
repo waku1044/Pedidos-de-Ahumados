@@ -296,7 +296,7 @@ function sendOrder() {
     let mensaje = "*PEDIDO AHUMADOS CAMPANA*\n\n";
 
     mensaje += `Cliente: ${nombre}\n`;
-    mensaje += `Dirección: ${direccion}\n`;
+    mensaje += direccion ? `Dirección: ${direccion}\n` : "Dirección: Retira por el local\n";
     mensaje += `Pago: ${pago}\n\n`;
 
     mensaje += "*PRODUCTOS:*\n";
