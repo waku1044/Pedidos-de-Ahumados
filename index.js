@@ -88,7 +88,7 @@
     const cartCount = document.getElementById('cart-count');
 
 
-  function loadMenu() {
+function loadMenu() {
     menuGrid.innerHTML = MENU.map(item => `
         <div class="menu-item">
             <!-- Agregamos el onclick y un cursor de puntero -->
@@ -137,6 +137,21 @@ function restar(id) {
         document.getElementById('contador-' + id).innerText = producto.cantidad;
     }
 }
+function toggleDireccion() {
+    const tipoEntrega = document.getElementById('tipo-entrega').value;
+    const contenedorDireccion = document.getElementById('contenedor-direccion');
+    const inputDireccion = document.getElementById('cliente-direccion');
+
+    if (tipoEntrega === 'retiro') {
+        contenedorDireccion.style.display = 'none';
+        inputDireccion.required = false;
+        inputDireccion.value = ''; // Limpia el texto si el usuario escribió algo
+    } else {
+        contenedorDireccion.style.display = 'block';
+        inputDireccion.required = true;
+    }
+}
+
 
 
 
@@ -178,7 +193,7 @@ function restar(id) {
 
  
 
-    function updateUI() {
+function updateUI() {
   const bar = document.getElementById('cart-bar');
   const count = document.getElementById('cart-count');
   
@@ -206,8 +221,8 @@ function renderSummary() {
     return `
       <div class="summary-item">
         <div class='margen-bottom'>
-          <span>${item.nombre} <strong>( x${item.cantidad} )</strong></span><br>
-          <small style="color: var(--naranja);">$${precio}</small>
+          <span style='font-size:1.3rem'>${item.nombre} <strong>( x${item.cantidad} )</strong></span><br>
+          <small style="color: var(--naranja);font-size:1.3rem">$${precio}</small>
         </div>
         
       </div>
@@ -223,13 +238,13 @@ function removeFromCart(id) {
   updateUI();
 }
 
-    function toggleModal(forceClose = false) {
+function toggleModal(forceClose = false) {
         const modal = document.getElementById('cart-modal');
         if (forceClose) modal.classList.add('modal-hidden');
         else modal.classList.toggle('modal-hidden');
     }
 
-    function sendOrder() {
+function sendOrder() {
     if (cart.length === 0) {
         alert("No hay productos en el carrito");
         return;
@@ -239,20 +254,39 @@ function removeFromCart(id) {
     const direccion = document.getElementById("cliente-direccion").value.trim();
     const pago = document.getElementById("cliente-pago").value;
     const observaciones = document.getElementById("cliente-observaciones").value.trim();
-
-    if (!nombre) {
-        alert("Ingresá tu nombre");
+    const tipoEntrega = document.querySelector('#tipo-entrega').value
+    if (nombre === "") {
+        Swal.fire({
+            title: 'Faltan datos',
+            text: 'Por favor, ingresá tu nombre.',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            customClass: {
+        popup: 'emergencia' // Esto aplica la clase .emergencia al contenedor del popup
+    }
+        });
         return;
     }
-
-    if (!direccion) {
-        alert("Ingresá la dirección");
-        return;
-    }
+ if (tipoEntrega !== 'retiro' && direccion === "") {
+    Swal.fire({
+        title: '¡Falta la dirección!',
+        text: 'Por favor, completá tu dirección para poder enviarte el pedido.',
+        icon: 'warning',
+        confirmButtonText: 'Entendido',
+        confirmButtonColor: '#3085d6' // Podés poner el color de tu marca
+    });
+    return; // Corta la ejecución
+}
 
     if (!pago) {
-        alert("Seleccioná un método de pago");
-        return;
+        Swal.fire({
+        title: '¡Faltan datos!',
+        text: 'Por favor, selecciona un metodo de pago.',
+        icon: 'warning',
+        confirmButtonText: 'Entendido',
+        confirmButtonColor: '#3085d6' // Podés poner el color de tu marca
+    });
+    return; // Corta la ejecución
     }
 
     let total = 0;
@@ -291,7 +325,8 @@ function abrirModal(item) {
     document.getElementById('modal-nombre').innerText = item.nombre;
     document.getElementById('modal-descripcion').innerText = item.descripcion;
     
-    modal.style.display = "flex"; // Muestra el modal
+    modal.style.display = "flex";
+     // Muestra el modal
 }
 
 function cerrarModal(event) {

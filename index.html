@@ -8,25 +8,26 @@
     <link href="https://googleapis.com" rel="stylesheet">
     <!-- Enlace al CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.min.css">
 </head>
 <body>
-
+    
     <header>
         <div class="header">
             <h2 class="titulo">Ahumados</h2>
             <img src="./img/ahumadosCamapana.png" alt="logo" class="logo">
             <h2 class="titulo">Campana</h2>
-
+            
         </div>
         <p>Sanguches Ahumados Artesanales</p>
         <h2>El auténtico sabor de la <span class="resaltar">leña</span> entre dos panes</h2>
-
+        
     </header>
-
+    
     <main class="container" id="menu-grid">
         <!-- Los productos se cargarán aquí con JS -->
     </main>
-
+    
     <div id="cart-bar" class="cart-hidde">
         <div class="cart-info">
             <span id="cart-count">0</span> productos seleccionados
@@ -35,62 +36,59 @@
             Pedir por WhatsApp
         </button>
     </div>
-<!-- ... dentro del body, antes del script ... -->
-
-<div id="cart-modal" class="modal-hidden">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Tu Pedido</h2>
-            <button onclick="toggleModal()" class="btn-close">&times;</button>
-        </div>
-        <div id="cart-items-list">
-            <!-- Los items del resumen se cargan aquí -->
-        </div>
-        <div class="modal-footer">
-            <div class="total-row">
-                <span>Total:</span>
-                <span id="modal-total">$0</span>
+    <!-- ... dentro del body, antes del script ... -->
+    
+    <div id="cart-modal" class="modal-hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tu Pedido</h2>
+                <button onclick="toggleModal()" class="btn-close">&times;</button>
             </div>
-            <div class="datos-cliente margen-bottom">
-    <input
-        type="text"
-        id="cliente-nombre"
-        placeholder="Nombre"
-        required
-    >
-
-    <input
-        type="text"
-        id="cliente-direccion"
-        placeholder="Dirección de entrega"
-        required
-    >
-
-    <select id="cliente-pago">
-        <option value="">Método de pago</option>
-        <option>Efectivo</option>
+            <div id="cart-items-list">
+                <!-- Los items del resumen se cargan aquí -->
+            </div>
+            <div class="modal-footer">
+                <div class="total-row">
+                    <span>Total:</span>
+                    <span id="modal-total">$0</span>
+                </div>
+                <div class="datos-cliente margen-bottom">
+                    <input type="text" id="cliente-nombre" placeholder="Nombre" required>
+                    
+                    <!-- Nuevo: Selector de tipo de entrega -->
+                    <select id="tipo-entrega" onchange="toggleDireccion()">
+                        <option value="delivery">Envío a domicilio</option>
+                        <option value="retiro">Retiro en local</option>
+                    </select>
+                    
+                    <!-- El campo de dirección ahora está en un contenedor -->
+                    <div id="contenedor-direccion">
+                        <input type="text" id="cliente-direccion" placeholder="Dirección de entrega" required>
+                    </div>
+                    
+                    <select id="cliente-pago">
+                        <option value="">Método de pago</option>
+                        <option>Efectivo</option>
         <option>Transferencia</option>
-        
     </select>
-    <textarea
-    id="cliente-observaciones"
-    placeholder="Observaciones (sin cebolla, retirar en local, etc.)">
-</textarea>
+    
+    <textarea id="cliente-observaciones" placeholder="Observaciones (sin cebolla, etc.)"></textarea>
 </div>
-            <button onclick="sendOrder()" class="btn-confirm">
-                Confirmar y enviar a WhatsApp
-            </button>
-            <div class="botones">
 
-                <button onclick="toggleModal()" class="btn-back">
-                    + Agregar algo más
-                </button>
-                <button onclick="toggleModal()" class="btn-correguir">
-                    - Eliminar Producto
-                </button>
-            </div>
-        </div>
-    </div>
+<button onclick="sendOrder()" class="btn-confirm">
+    Confirmar y enviar a WhatsApp
+</button>
+<div class="botones">
+    
+    <button onclick="toggleModal()" class="btn-back">
+        + Agregar algo más
+    </button>
+    <button onclick="toggleModal()" class="btn-correguir">
+        - Eliminar Producto
+    </button>
+</div>
+</div>
+</div>
 </div>
 <div id="modal-detalle" class="modal" onclick="cerrarModal(event)">
     <div class="modal-content">
@@ -109,7 +107,10 @@
     </div>
 </footer>
 
-    <!-- Enlace al JS -->
-    <script src="index.js"></script>
+<!-- Enlace correcto a SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.all.min.js"></script>
+<!-- Tu script siempre debe ir DESPUÉS de la librería -->
+<script src="index.js"></script>
+
 </body>
 </html>
